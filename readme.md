@@ -1,6 +1,6 @@
 ### Indentation
 - Use your own language spacing standard (e.g. for java: 4 spaces)
-- Code is meant to be read, please use add newlines + indentation to split long code statements / long method calls, do you prefer reading an long article and scorll horizontally or vertically?
+- Code is meant to be read, please use newlines + indentation to split long code statements / long method calls, do you prefer reading an long article and scorll horizontally or vertically?
 
 ```java
 // Bad
