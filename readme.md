@@ -1,6 +1,6 @@
 ### Indentation
 - Use your own language spacing standard (e.g. for java: 4 spaces)
-- Code is meant to be read, please use newlines + indentation to split long code statements / long method calls, do you prefer reading an long article and scorll horizontally or vertically?
+- Code is meant to be read, please use newlines + indentation to split long code statements / long method calls. When reading a long artical do you prefer to scroll horizontally or vertically?
 
 ```java
 // Bad
@@ -10,8 +10,8 @@ ResultFromExternalLibrary result = this.someExternalLibrary.doSomethingWithParam
 
 // Bad
 // ------------
-// Opening parenthesis does not match the current statement indentation level,
-// this way indentation guide won't match the closing parenthesis.
+// Opening parentheses does not match the current statement indentation level.
+// This way indentation guide won't match the closing parenthesis.
 // If the description is confusing, let me know and
 // I'll show you how the indentation guide helps.
 ResultFromExternalLibrary result = this.someExternalLibrary.doSomethingWithParameter(
@@ -21,6 +21,15 @@ ResultFromExternalLibrary result = this.someExternalLibrary.doSomethingWithParam
 
 // Good
 // ------------
+// Just like curly braces for if statement, it's better like this:
+// if (bla) {
+//   return doSomething();
+// }
+//
+// VS
+//
+// if (bla) {
+//   return doSomething();}
 ResultFromExternalLibrary result = this.someExternalLibrary.doSomethingWithParameter(
   parameter1,
   parameter2,
@@ -29,8 +38,8 @@ ResultFromExternalLibrary result = this.someExternalLibrary.doSomethingWithParam
 ```
 
 ### Builder pattern
-Please create DTO / builder pattern for method (no function in java) with >= 2 parameters.
-You could use lombok plugin to automatically create builder for you.
+Please create DTO / builder pattern for functions and methods with >= 2 parameters.
+You could use lombok plugin (java) to automatically create builder for you.
 
 ```java
 // Bad :')
@@ -39,7 +48,7 @@ AnnuityCalculator.calculate(100000, 0.1, 3);
 
 // Good
 // ------------
-// Yes it's longer, but you can guess what's the parameters for and it fixes
+// Yes it's longer, but you can guess what are the parameters for and it reduces
 // the possibility of bug because of wrong parameter ordering
 // e.g. AnnuityCalculator.calculate(3, 0.1, 100000);
 AnnuityCalculator.calculate(
@@ -51,22 +60,23 @@ AnnuityCalculator.calculate(
     .build()
 );
 
-// It's arguable whether to use builder pattern for a 2-parameter method,
-// but consider this method, which one is the discount? first one or 2nd one?
+// It's arguable whether to use builder pattern for a 2-parameter method or not.
+// Consider below method, which one is the discount? first one or 2nd one?
 // by convention it should be 120000, `amount` should be named `purchaseAmount`,
-// but it doesn't prevent engineer to mistakenly swap the parameter
+// but it doesn't prevent engineer to mistakenly swap the parameter.
 DiscountCalculator.subtractDiscount(amount, 120000);
 DiscountCalculator.subtractDiscount(120000, discount);
 
 // Now imagine we're stricting builder pattern, it should be more readable and
 // it should be easier for code reviewer to notice the mistake if we're mistakenly
 // swap the parameter.
+//
 // Note that there's no strict indentation for for the SubtractDiscountInput,
 // you can place it at the same line of .subtractDiscount method call,
-// or you could add new line (just like AnnuityCalculator.calculate example above),
-// it's up to you :)
+// or you could add new line (just like AnnuityCalculator.calculate example above), // it's up to you :)
 // Please note that for a 2-parameter method, if the parameter type is different then
-// you don't need to use builder pattern.
+// maybe you don't need to use builder pattern because the compiler
+// will prevent you to mis-place the parameters.
 DiscountCalculator.subtractDiscount(SubtractDiscountInput.builder()
     .purchaseAmount(purchaseAmount)
     .discount(120000)
@@ -88,7 +98,7 @@ Not many language has `guard` keyword / feature, in that case you could emulate 
 // Bad
 // ------------
 // My gosh, 2 nested statements, the business logic is
-// wrapped with 2 levels of curly brackets :scream:
+// wrapped within 2 levels of curly brackets :scream:
 if (valid) {
   if (discount != 0) {
       // Logic here
