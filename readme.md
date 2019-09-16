@@ -1,6 +1,6 @@
 ### Indentation
-- Use your own language spacing standard (e.g. for java: 4 spaces)
-- Code is meant to be read, please use newlines + indentation to split long code statements / long method calls. When reading a long artical do you prefer to scroll horizontally or vertically?
+- Set your spacing standard based on team's guideline
+- Code is meant to be read, please use newlines + indentation to split long code statements / long method calls. Do you prefer to scroll horizontally or vertically when reading a long article ?
 
 ```java
 // Bad
